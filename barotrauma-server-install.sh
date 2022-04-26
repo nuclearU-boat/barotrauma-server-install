@@ -7,18 +7,18 @@
 steamcmd +login anonymous +app_update 602960 +app_update 1026340 +quit
 #and exit steam back into shell
 
-BTDS="~/.steam/steamapps/common/Barotrauma Dedicated Server"
+BTDS="/home/steam/.steam/steamapps/common/Barotrauma Dedicated Server"
 
 # check that all paths are in place
 echo 'checking required paths'
 
-if [[ ! -d ~/.steam/sdk64 ]]; then
-	echo 'directory ~/.steam/sdk64/ does not exist'
+if [[ ! -d /home/steam/.steam/sdk64 ]]; then
+	echo 'directory /home/steam/.steam/sdk64/ does not exist'
 	echo 'creating ...'
-	mkdir ~/.steam/sdk64;
+	mkdir /home/steam/.steam/sdk64;
 fi
-if [[ ! -f ~/.steam/sdk64/steamclient.so ]]; then
-	ln -s "${BTDS}"/linux64/steamclient.so  ~/.steam/sdk64/
+if [[ ! -f /home/steam/.steam/sdk64/steamclient.so ]]; then
+	ln -s "${BTDS}"/linux64/steamclient.so  /home/steam/.steam/sdk64/
 fi
 
 cd "${BTDS}"
@@ -34,23 +34,23 @@ for f in "${ModsFolder[@]}"; do
 done
 
 
-# this needs to be linked into ~/.local/share/
+# this needs to be linked into /home/steam/.local/share/
 # by default this no longer spawns on its own
 # and needs to be created if still missing
 echo 'going home'
 cd $HOME
-echo 'checking for ~/.local/share'
-if [[ ! -d ~/.local ]]; then
+echo 'checking for /home/steam/.local/share'
+if [[ ! -d /home/steam/.local ]]; then
 	mkdir .local
 	echo '.local created'
 	cd .local
 fi
 if [[ ! -d share ]]; then
 	mkdir share
-	echo '~/.local/share created'
+	echo '/home/steam/.local/share created'
 	cd share
 fi
 
-if [[ ! -d ~/.local/share/Daedalic\ Entertainment\ GmbH ]]; then
+if [[ ! -d /home/steam/.local/share/Daedalic\ Entertainment\ GmbH ]]; then
 	ln -s "${BTDS}"/Daedalic\ Entertainment\ GmbH/ .
 fi
