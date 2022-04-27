@@ -7,7 +7,7 @@
 steamcmd +login anonymous +app_update 602960 +app_update 1026340 +quit
 #and exit steam back into shell
 
-BTDS="/home/steam/.steam/SteamApps/common/Barotrauma Dedicated Server"
+BTDS="/home/steam/.steam/steamapps/common/Barotrauma Dedicated Server"
 
 # check that all paths are in place
 echo 'checking required paths'
